@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AliExpress Sales Calendar</title>
+  <style>
+    :root {
+      --bg: #fff;
+      --text: #1a1a1a;
+      --muted: #666;
+      --accent: #ff4747;
+      --accent-dark: #e63e3e;
+      --accent-orange: #ff6a00;
+      --card-bg: #fff5f5;
+      --border: #ffd6d6;
+    }
+
+    /* System dark default */
+    @media (prefers-color-scheme: dark) {
+      #theme-system:checked ~ .page {
+        --bg: #1a0a0a;
+        --text: #f0e0e0;
+        --muted: #b08888;
+        --card-bg: #2a1212;
+        --border: #4a2020;
+      }
+    }
+
+    /* Explicit dark override */
+    #theme-dark:checked ~ .page {
+      --bg: #1a0a0a;
+      --text: #f0e0e0;
+      --muted: #b08888;
+      --card-bg: #2a1212;
+      --border: #4a2020;
+    }
+
+    /* Toggle styling */
+    .theme-toggle {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+    }
+    .theme-toggle label {
+      display: inline-block;
+      padding: 0.3rem 0.6rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      cursor: pointer;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      background: var(--bg);
+      transition: all 0.2s;
+    }
+    .theme-toggle label:first-of-type {
+      border-radius: 6px 0 0 6px;
+      border-right: none;
+    }
+    .theme-toggle label:last-of-type {
+      border-radius: 0 6px 6px 0;
+    }
+    #theme-light:checked ~ .page .theme-toggle label[for="theme-light"],
+    #theme-dark:checked ~ .page .theme-toggle label[for="theme-dark"] {
+      background: var(--accent);
+      color: #fff;
+      border-color: var(--accent);
+    }
+
+    /* Hidden radios */
+    input[name="theme"] { display: none; }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    .page {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+      transition: background 0.3s, color 0.3s;
+    }
+    .content {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 2rem 1rem;
+      position: relative;
+    }
+    .header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    .logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 1.8rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--accent), var(--accent-orange));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 0.5rem;
+    }
+    .subtitle {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+    .subscribe-box {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+      transition: background 0.3s, border-color 0.3s;
+    }
+    .subscribe-box h2 {
+      font-size: 1.1rem;
+      margin-bottom: 0.75rem;
+    }
+    .url-box {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+    .url-box input {
+      flex: 1;
+      padding: 0.6rem 0.8rem;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-size: 0.9rem;
+      background: var(--bg);
+      color: var(--text);
+      transition: background 0.3s, border-color 0.3s, color 0.3s;
+    }
+    .url-box button {
+      padding: 0.6rem 1.2rem;
+      background: linear-gradient(135deg, var(--accent), var(--accent-orange));
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      font-weight: 600;
+      white-space: nowrap;
+      transition: opacity 0.2s;
+    }
+    .url-box button:hover { opacity: 0.85; }
+    .instructions {
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+    .instructions li { margin-bottom: 0.3rem; }
+    .action-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+    .action-btn {
+      display: inline-block;
+      padding: 0.5rem 1rem;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: var(--bg);
+      color: var(--text);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .action-btn:hover {
+      border-color: var(--accent);
+      background: var(--card-bg);
+    }
+    footer {
+      text-align: center;
+      margin-top: 3rem;
+      color: var(--muted);
+      font-size: 0.8rem;
+    }
+  </style>
+</head>
+<body>
+  <input type="radio" id="theme-light" name="theme">
+  <input type="radio" id="theme-dark" name="theme">
+  <input type="radio" id="theme-system" name="theme" checked>
+  <div class="page">
+    <div class="content">
+      <div class="theme-toggle">
+        <label for="theme-light">Light</label><label for="theme-dark">Dark</label>
+      </div>
+
+      <div class="header">
+        <div class="logo">AliExpress Sales Calendar</div>
+        <p class="subtitle">Never miss a deal. Subscribe to get all AliExpress sale dates in your calendar app.</p>
+      </div>
+
+      <div class="subscribe-box">
+        <h2>Subscribe to Calendar</h2>
+        <div class="url-box">
+          <input type="text" id="cal-url" readonly>
+          <button onclick="copyUrl()">Copy</button>
+        </div>
+        <ol class="instructions">
+          <li><strong>Google Calendar:</strong> Settings &rarr; Add calendar &rarr; From URL &rarr; paste</li>
+          <li><strong>Apple Calendar:</strong> File &rarr; New Calendar Subscription &rarr; paste</li>
+          <li><strong>Outlook:</strong> Add calendar &rarr; Subscribe from web &rarr; paste</li>
+        </ol>
+        <div class="action-buttons">
+      <a href="/aliexpress-sales.ics" class="action-btn">Download .ics</a>
+      <a id="google-cal" target="_blank" rel="noopener" class="action-btn">Google Calendar</a>
+      <a id="webcal-link" class="action-btn">Subscribe (webcal)</a>
+    </div>
+      </div>
+
+      <footer>
+        Sale dates sourced from public AliExpress calendars. Updated yearly.
+      </footer>
+    </div>
+  </div>
+
+  <script>
+    const base = location.origin;
+    const url = base + "/aliexpress-sales.ics";
+    const webcalUrl = url.replace(/^https?:/, "webcal:");
+    document.getElementById("cal-url").value = url;
+    document.getElementById("google-cal").href = "https://calendar.google.com/calendar/r?cid=" + encodeURIComponent(webcalUrl);
+    document.getElementById("webcal-link").href = webcalUrl;
+    function copyUrl() {
+      navigator.clipboard.writeText(url).then(() => {
+        const btn = document.querySelector(".url-box button");
+        btn.textContent = "Copied!";
+        setTimeout(() => btn.textContent = "Copy", 2000);
+      });
+    }
+  </script>
+</body>
+</html>
