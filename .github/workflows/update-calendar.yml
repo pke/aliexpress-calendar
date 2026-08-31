@@ -1,0 +1,53 @@
+name: Update sales calendar
+
+on:
+  schedule:
+    - cron: "0 6 1 * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-sales-calendar
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out master
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          ref: master
+          fetch-depth: 0
+
+      - name: Set up Node.js
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7
+        with:
+          node-version: 24
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Test and type-check
+        run: |
+          npm test
+          npm run typecheck
+
+      - name: Scrape and validate calendar
+        run: npm run update
+
+      - name: Commit validated calendar changes
+        run: |
+          git add lib/events.ts public/aliexpress-sales.ics
+          if git diff --cached --quiet; then
+            echo "No calendar changes to commit."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "chore: update AliExpress sales calendar"
+          git push origin HEAD:master

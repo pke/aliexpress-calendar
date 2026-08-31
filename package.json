@@ -5,11 +5,17 @@
   "type": "module",
   "scripts": {
     "dev": "vercel dev",
-    "generate": "tsx generate.ts"
+    "generate": "node --import tsx generate.ts",
+    "update": "node --import tsx update-calendar.ts",
+    "test": "node --import tsx --test test/*.test.ts",
+    "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
     "@types/node": "^25.5.2",
     "tsx": "^4.21.0",
     "typescript": "^6.0.2"
+  },
+  "dependencies": {
+    "cheerio": "^1.2.0"
   }
 }
