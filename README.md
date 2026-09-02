@@ -1,12 +1,16 @@
 # AliExpress Sales Calendar
 
-Subscribable iCal feed of AliExpress promo events, hosted on Vercel.
+[![Update and deploy](https://github.com/pke/aliexpress-calendar/actions/workflows/update-calendar.yml/badge.svg?branch=master)](https://github.com/pke/aliexpress-calendar/actions/workflows/update-calendar.yml)
+[![Subscribe](https://img.shields.io/badge/Subscribe-calendar-FF4747?logo=googlecalendar&logoColor=white)](https://aesales.kalenderabos.de/aliexpress-sales.ics)
+[![License: MIT](https://img.shields.io/badge/License-MIT-2F80ED.svg)](LICENSE)
+
+Subscribable iCal feed of AliExpress promo events, hosted on GitHub Pages.
 
 ## Subscribe
 
-- **URL:** `https://aliexpress-calendar.vercel.app/aliexpress-sales.ics`
-- **Google Calendar:** [Add to Google Calendar](https://calendar.google.com/calendar/r?cid=webcal%3A%2F%2Faliexpress-calendar.vercel.app%2Faliexpress-sales.ics)
-- **Apple Calendar / Outlook:** Use `webcal://aliexpress-calendar.vercel.app/aliexpress-sales.ics`
+- **URL:** `https://aesales.kalenderabos.de/aliexpress-sales.ics`
+- **Google Calendar:** [Add to Google Calendar](https://calendar.google.com/calendar/r?cid=webcal%3A%2F%2Faesales.kalenderabos.de%2Faliexpress-sales.ics)
+- **Apple Calendar / Outlook:** Use `webcal://aesales.kalenderabos.de/aliexpress-sales.ics`
 
 ## Updates
 
@@ -34,4 +38,4 @@ npm run typecheck
 npm run generate
 ```
 
-Vercel deploys commits to `master` through its GitHub integration.
+The same workflow deploys the validated `public/` directory to GitHub Pages after updates and on every push to `master`.

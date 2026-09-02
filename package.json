@@ -4,7 +4,6 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "vercel dev",
     "generate": "node --import tsx generate.ts",
     "update": "node --import tsx update-calendar.ts",
     "test": "node --import tsx --test test/*.test.ts",

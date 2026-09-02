@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="canonical" href="https://aesales.kalenderabos.de/">
   <title>AliExpress Sales Calendar</title>
   <style>
     :root {
@@ -208,21 +209,20 @@
           <li><strong>Outlook:</strong> Add calendar &rarr; Subscribe from web &rarr; paste</li>
         </ol>
         <div class="action-buttons">
-      <a href="/aliexpress-sales.ics" class="action-btn">Download .ics</a>
+      <a href="https://aesales.kalenderabos.de/aliexpress-sales.ics" class="action-btn">Download .ics</a>
       <a id="google-cal" target="_blank" rel="noopener" class="action-btn">Google Calendar</a>
       <a id="webcal-link" class="action-btn">Subscribe (webcal)</a>
     </div>
       </div>
 
       <footer>
-        Sale dates sourced from public AliExpress calendars. Updated yearly.
+        Sale dates sourced from public AliExpress calendars. Updated monthly.
       </footer>
     </div>
   </div>
 
   <script>
-    const base = location.origin;
-    const url = base + "/aliexpress-sales.ics";
+    const url = "https://aesales.kalenderabos.de/aliexpress-sales.ics";
     const webcalUrl = url.replace(/^https?:/, "webcal:");
     document.getElementById("cal-url").value = url;
     document.getElementById("google-cal").href = "https://calendar.google.com/calendar/r?cid=" + encodeURIComponent(webcalUrl);
