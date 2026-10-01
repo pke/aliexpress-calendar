@@ -4,7 +4,7 @@ export interface SaleEvent {
   endDate: string; // YYYYMMDD (exclusive for iCal)
 }
 
-// Generated from https://en.ali-shop.net/sales on 2026-08-31
+// Generated from https://en.ali-shop.net/sales on 2026-10-01
 export const events: SaleEvent[] = [
   { name: "Choice Day + New Year Deals", startDate: "20260101", endDate: "20260108" },
   { name: "Winter Sale", startDate: "20260112", endDate: "20260119" },
@@ -34,10 +34,9 @@ export const events: SaleEvent[] = [
   { name: "Fall Sale", startDate: "20260914", endDate: "20260921" },
   { name: "Brand Day", startDate: "20260921", endDate: "20260924" },
   { name: "PayDay", startDate: "20260926", endDate: "20260929" },
-  { name: "Choice Day", startDate: "20261001", endDate: "20261008" },
-  { name: "Holiday Season", startDate: "20261009", endDate: "20261014" },
-  { name: "Brand Day", startDate: "20261014", endDate: "20261019" },
-  { name: "Fall Fashion", startDate: "20261020", endDate: "20261026" },
+  { name: "Choice Day + Party Ready Sale", startDate: "20261001", endDate: "20261008" },
+  { name: "Brand Day", startDate: "20261009", endDate: "20261012" },
+  { name: "Winter Offer", startDate: "20261014", endDate: "20261017" },
   { name: "Mega Choice Day", startDate: "20261101", endDate: "20261108" },
   { name: "11.11: Global Shopping Festival", startDate: "20261111", endDate: "20261120" },
   { name: "Black Friday", startDate: "20261120", endDate: "20261204" },
