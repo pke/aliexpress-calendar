@@ -4,7 +4,7 @@ export interface SaleEvent {
   endDate: string; // YYYYMMDD (exclusive for iCal)
 }
 
-// Generated from https://en.ali-shop.net/sales on 2026-10-01
+// Generated from https://en.ali-shop.net/sales on 2026-11-01
 export const events: SaleEvent[] = [
   { name: "Choice Day + New Year Deals", startDate: "20260101", endDate: "20260108" },
   { name: "Winter Sale", startDate: "20260112", endDate: "20260119" },
@@ -36,11 +36,10 @@ export const events: SaleEvent[] = [
   { name: "PayDay", startDate: "20260926", endDate: "20260929" },
   { name: "Choice Day + Party Ready Sale", startDate: "20261001", endDate: "20261008" },
   { name: "Brand Day", startDate: "20261009", endDate: "20261012" },
-  { name: "Winter Offer", startDate: "20261014", endDate: "20261017" },
-  { name: "Mega Choice Day", startDate: "20261101", endDate: "20261108" },
-  { name: "11.11: Global Shopping Festival", startDate: "20261111", endDate: "20261120" },
-  { name: "Black Friday", startDate: "20261120", endDate: "20261204" },
-  { name: "Cyber Monday", startDate: "20261201", endDate: "20261204" },
+  { name: "Winter Offers", startDate: "20261013", endDate: "20261017" },
+  { name: "11.11: Global Shopping Festival", startDate: "20261101", endDate: "20261119" },
+  { name: "Black Friday", startDate: "20261119", endDate: "20261130" },
+  { name: "Cyber Monday", startDate: "20261130", endDate: "20261204" },
   { name: "Christmas Sale", startDate: "20261208", endDate: "20261215" },
   { name: "Snowfall Offers", startDate: "20261216", endDate: "20261222" },
   { name: "Brand Day", startDate: "20261222", endDate: "20261227" },
